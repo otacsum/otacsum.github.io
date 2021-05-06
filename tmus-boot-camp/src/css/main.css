@@ -1,0 +1,31 @@
+body {
+    margin: 0px;
+    background-color: #fff;
+}
+
+input {
+    margin: 5px;
+}
+
+
+#app {
+    font-family: Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #000;
+    margin-top: 0px;
+}
+
+.app-header {
+    height: 50px;
+    background-color: #e20074;
+    color: #fff;
+    text-align: left;
+}
+
+.app-header img {
+    margin-left: 10px;
+    height: 50px;
+}
+
