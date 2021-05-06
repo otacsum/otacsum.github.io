@@ -20,7 +20,7 @@ const fs = require("fs");
         console.log(e.message);
         process.exit(1);
     } finally {
-        await execa("git", ["checkout", "-f", "master"]);
+        await execa("git", ["checkout", "-f", "main"]);
         await execa("git", ["branch", "-D", "gh-pages"]);
     }
 })();
