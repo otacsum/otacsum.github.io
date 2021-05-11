@@ -4,44 +4,44 @@
 
     <h3>Enter two integers:</h3>
     <div id="inputForm">
-      <input v-model.lazy.number="integerX" type="number" @keypress="onlyIntegers" placeholder="Enter an integer">
+      <input v-model.number="integerX" type="number" @keypress="onlyIntegers" placeholder="Enter an integer">
       <input v-model.number="integerY" type="number" @keypress="onlyIntegers" placeholder="Enter another integer">
     </div>
 
     <div id="results">
       <div>
-        <span v-if="integerY && !integerX" class="left">Please enter the first integer.</span>
-        <span v-else-if="integerX && integerY" class="left">The sum of {{integerX}} + {{integerY}} is:</span>
-        <span v-else-if="integerX" class="left">The sum of {{integerX}} and...</span>
-          <span v-if="integerX && integerY" class="right">{{ sumOfTwoInts }}</span>
+        <span v-if="(integerY || integerY === 0) && (integerX === null || integerX == '') " class="left">Please enter the first integer.</span>
+        <span v-else-if="(integerX || integerX === 0) && (integerY || integerY === 0)" class="left">The sum of {{integerX}} + {{integerY}} is:</span>
+        <span v-else-if="(integerX || integerX === 0)" class="left">The sum of {{integerX}} and...</span>
+          <span v-if="(integerX || integerX === 0) && (integerY || integerY === 0)" class="right">{{ sumOfTwoInts }}</span>
           <span v-else class="right"></span>
       </div>
 
       <div>
-        <span v-if="integerX && integerY" class="left">The difference of {{integerX}} - {{integerY}} is:</span>
-        <span v-else-if="integerX" class="left">The difference of {{integerX}} minus...</span>
-          <span v-if="integerX && integerY" class="right">{{ diffOfTwoInts }}</span>
+        <span v-if="(integerX || integerX === 0) && (integerY || integerY === 0)" class="left">The difference of {{integerX}} - {{integerY}} is:</span>
+        <span v-else-if="(integerX || integerX === 0)" class="left">The difference of {{integerX}} minus...</span>
+          <span v-if="(integerX || integerX === 0) && (integerY || integerY === 0)" class="right">{{ diffOfTwoInts }}</span>
           <span v-else class="right"></span>
       </div>
 
       <div>
-        <span v-if="integerX && integerY" class="left">The product of {{integerX}} X {{integerY}} is:</span>
-        <span v-else-if="integerX" class="left">The product of {{integerX}} times...</span>
-          <span v-if="integerX && integerY" class="right">{{ prodOfTwoInts }}</span>
+        <span v-if="(integerX || integerX === 0) && (integerY || integerY === 0)" class="left">The product of {{integerX}} X {{integerY}} is:</span>
+        <span v-else-if="(integerX || integerX === 0)" class="left">The product of {{integerX}} times...</span>
+          <span v-if="(integerX || integerX === 0) && (integerY || integerY === 0)" class="right">{{ prodOfTwoInts }}</span>
           <span v-else class="right"></span>
       </div>
 
       <div>
-        <span v-if="integerX && integerY" class="left">The quotient of {{integerX}} / {{integerY}} is:</span>
-        <span v-else-if="integerX" class="left">The quotient of {{integerX}} divided by...</span>
-          <span v-if="integerX && integerY" class="right">{{ quotOfTwoInts }}</span>
+        <span v-if="(integerX || integerX === 0) && (integerY || integerY === 0)" class="left">The quotient of {{integerX}} / {{integerY}} is:</span>
+        <span v-else-if="(integerX || integerX === 0)" class="left">The quotient of {{integerX}} divided by...</span>
+          <span v-if="(integerX || integerX === 0) && (integerY || integerY === 0)" class="right">{{ quotOfTwoInts }}</span>
           <span v-else class="right"></span>
       </div>
 
       <div>
-        <span v-if="integerX && integerY" class="left">The modulo (remainder) of {{integerX}} % {{integerY}} is:</span>
-        <span v-else-if="integerX" class="left">The modulo (remainder) of {{integerX}} divided by...</span>
-          <span v-if="integerX && integerY" class="right">{{ modOfTwoInts }}</span>
+        <span v-if="(integerX || integerX === 0) && (integerY || integerY === 0)" class="left">The modulo (remainder) of {{integerX}} % {{integerY}} is:</span>
+        <span v-else-if="(integerX || integerX === 0)" class="left">The modulo (remainder) of {{integerX}} divided by...</span>
+          <span v-if="(integerX || integerX === 0) && (integerY || integerY === 0)" class="right">{{ modOfTwoInts }}</span>
           <span v-else class="right"></span>
       </div>
 
@@ -76,7 +76,12 @@ export default {
       return Math.round(this.integerX / this.integerY * 100) / 100
     },
     modOfTwoInts() {  //Modulo
-      return this.integerX % this.integerY;
+      if (this.integerY === 0) {
+        return "Not Possible"
+      }
+      else {
+        return this.integerX % this.integerY;
+      }
     }
   },
 
