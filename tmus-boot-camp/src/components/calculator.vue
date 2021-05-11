@@ -73,7 +73,12 @@ export default {
       return this.integerX * this.integerY;
     },
     quotOfTwoInts() {  //Division
-      return Math.round(this.integerX / this.integerY * 100) / 100
+      if (this.integerX === 0) {
+        return "Not Possible"
+      }
+      else {
+        return Math.round(this.integerX / this.integerY * 100) / 100
+      }
     },
     modOfTwoInts() {  //Modulo
       if (this.integerY === 0) {
